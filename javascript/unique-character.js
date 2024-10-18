@@ -4,16 +4,18 @@ function findUniqueCharacter(text) {
     throw new Error('Pass a string');
   }
 
-  const occurences = {};
-  text.split('').forEach(character => {
-    if (typeof occurences[character] === 'number') {
-      occurences[character]++;
-    } else {
-      occurences[character] = 1;
-    }
-  })
+  const characters = text.split('');
 
-  console.log(occurences);
+  const occurences = characters.reduce((acc, curr) => {
+    if (typeof acc[curr] === 'number') {
+      acc[curr]++;
+    } else {
+      acc[curr] = 1;
+    }
+
+    return acc;
+  }, {});
+
   for(let character in occurences) {
     if (occurences[character] === 1) {
       return character;
