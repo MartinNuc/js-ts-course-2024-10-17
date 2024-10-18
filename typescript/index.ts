@@ -1,2 +1,3 @@
+import { getPersonById } from "./person-database";
 
-console.log('Hello word');
+getPersonById(4)
